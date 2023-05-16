@@ -30,7 +30,7 @@ public class CoursesServices {
             status.setMessages("O título do curso é obrigatório");
             return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
         }
-        else if(request.getPrice() == null || request.getPrice() < 0)
+        else if(request.getPrice() <= 0)
         {
             status.setMessages("Insira um preço válido");
             return new ResponseEntity<>(status, HttpStatus.BAD_REQUEST);
@@ -78,6 +78,11 @@ public class CoursesServices {
         return new ResponseEntity<>(_repositoryCourses.findByOrderByTitle(), HttpStatus.OK);
     }
 
+    public ResponseEntity<?> getAllCoursesSortedByPrice()
+    {
+        return new ResponseEntity<>(_repositoryCourses.findByOrderByPrice(), HttpStatus.OK);
+    }
+
     public ResponseEntity<?> countCourses()
     {
         return new ResponseEntity<>(_repositoryCourses.count(), HttpStatus.OK);
@@ -96,7 +101,7 @@ public class CoursesServices {
             request.setTitle(course.getTitle());
         }
         
-        if (request.getPrice() == null || request.getPrice() < 0) {
+        if (request.getPrice() <= 0) {
             request.setPrice(course.getPrice());
         }
         

@@ -57,6 +57,12 @@ public class ControllerCourse {
         return _coursesServices.getAllCoursesSortedByTitle();
     }
 
+    @GetMapping("/sortByPrice")
+    public ResponseEntity<?> getSortCoursesByPrice()
+    {
+        return _coursesServices.getAllCoursesSortedByPrice();
+    }
+
     @GetMapping("/count")
     public ResponseEntity<?> countCourses()
     {

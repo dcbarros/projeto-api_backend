@@ -10,5 +10,6 @@ public interface RepositoryCourse extends CrudRepository<Course, Long> {
     
     Iterable<Course> findByTitleContainingIgnoreCase(String title);
     Iterable<Course> findByOrderByTitle();
+    Iterable<Course> findByOrderByPrice();
     int countById(Long courseId);
 }
